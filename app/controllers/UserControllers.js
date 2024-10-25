@@ -40,7 +40,6 @@ export const ProfileDetails = async (req, res) => {
     catch(e){
         return res.json({ status: "fail", message: e.toString() });
     }
-
 };
 
 export const ProfileUpdate = async (req, res) => {
@@ -51,6 +50,7 @@ export const ProfileUpdate = async (req, res) => {
         return res.json({ status: "success", message: "User Update successful" });
     }
     catch (e) {
+        
         return res.json({ status: "error", message: e.toString() });
     }
 };
