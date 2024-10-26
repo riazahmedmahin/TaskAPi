@@ -11,10 +11,10 @@ export const TaskListbyStatus = async (req, res) => {
     return res.json({ status: "success", message: "Task list retrieved" });
 };
 
-export const Delete = async (req, res) => {
+export const DeleteTask = async (req, res) => {
     return res.json({ status: "success", message: "Task deleted" });
 };
 
-export const Count = async (req, res) => {
+export const CountTask = async (req, res) => {
     return res.json({ status: "success", message: "Task count retrieved" });
 };

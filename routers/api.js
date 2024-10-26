@@ -16,11 +16,11 @@ router.post("/CodeVerity", UserControllers.CodeVerity);
 router.post("/ResetePassword", UserControllers.ResetePassword);
 
 // TASK routes
-router.post("/CreateTask", TaskController.CreateTask);
-router.get("/UpdateTaskStatus", TaskController.UpdateTaskStatus);
-router.get("/TaskListbyStatus", TaskController.TaskListbyStatus);
-router.get("/Delete", TaskController.Delete);
-router.get("/Count", TaskController.Count);
+router.post("/CreateTask",auth,TaskController.CreateTask);
+router.get("/UpdateTaskStatus", auth,TaskController.UpdateTaskStatus);
+router.get("/TaskListbyStatus",auth, TaskController.TaskListbyStatus);
+router.get("/DeleteTask",auth, TaskController.DeleteTask);
+router.get("/CountTask",auth,TaskController.CountTask);
 
 
 // Make sure to export the router
