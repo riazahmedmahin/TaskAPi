@@ -1,7 +1,7 @@
 // app/controllers/UserControllers.js
 import UsersModel from "../model/UserModel.js"; // Make sure this import path is correct
 import { TokenEncode } from "../utility/tokenutility.js";
-import {SendEmail} from "../utility/emailutility.js"
+import { SendEmail } from "../utility/emailutility.js"
 
 
 
