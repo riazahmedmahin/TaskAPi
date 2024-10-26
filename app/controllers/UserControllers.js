@@ -1,6 +1,9 @@
 // app/controllers/UserControllers.js
 import UsersModel from "../model/UserModel.js"; // Make sure this import path is correct
 import { TokenEncode } from "../utility/tokenutility.js";
+import {SendEmail} from "../utility/emailutility.js"
+
+
 
 export const Registration = async (req, res) => {
     try {
@@ -55,7 +58,31 @@ export const ProfileUpdate = async (req, res) => {
 };
 
 export const EmailVerity = async (req, res) => {
-    return res.json({ status: "success", message: "Email verification successful" });
+
+  try{
+    let email=req.params.email;
+    let data = await UsersModel.findOne({email:email})
+    if(data==null){
+        return res.json({ status: "fail", message: "user email does not exist" });
+    }
+    else{
+        //--- send otp to email
+        let code=Math.floor(100000+Math.random()*900000);
+        let EmailTo=data['email']
+        let EmailText= "Your code is "+code;
+        let EmailSubject="Task Api verification code"
+        await SendEmail(EmailTo,EmailText,EmailSubject)
+
+        //---update otp in user
+        await UsersModel.updateOne({email:email},{otp:code})
+        return res.json({ status: "success", message: "Email verification successful" });
+    }
+  }
+  catch(e){
+    return res.json({ status: "fail", message: e.toString() });
+
+  }
+    
 };
 
 export const CodeVerity = async (req, res) => {
