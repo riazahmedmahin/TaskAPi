@@ -45,6 +45,9 @@ export const ProfileDetails = async (req, res) => {
     }
 };
 
+
+
+
 export const ProfileUpdate = async (req, res) => {
     try {
         let reqBody = req.body;
@@ -80,15 +83,49 @@ export const EmailVerity = async (req, res) => {
   }
   catch(e){
     return res.json({ status: "fail", message: e.toString() });
-
   }
     
 };
 
 export const CodeVerity = async (req, res) => {
-    return res.json({ status: "success", message: "Code verification successful" });
+
+    try{
+        let reqBody =req.body;
+        let data =await UsersModel.findOne({email:reqBody['email'],otp:reqBody['otp']})
+        if(data==null){
+            return res.json({ status: "fail", message: "wrong verification code" });
+        }
+        else{
+            return res.json({ status: "success", message: "Code verification successful" });
+            }
+    }
+
+    catch(e){
+        return res.json({ status: "success", message:e.toString() });
+    }
+  
+    
 };
 
 export const ResetePassword = async (req, res) => {
-    return res.json({ status: "success", message: "Password reset successful" });
+    try{
+        let reqBody =req.body;
+        let data =await UsersModel.findOne({email:reqBody['email'],otp:reqBody['otp']})
+        if(data==null){
+            return res.json({ status: "fail", message: "wrong verification code" });
+        }
+        else{
+            let data =await UsersModel.updateOne({email:reqBody['email']},
+            {
+              otp:"0",
+              password:reqBody['password'],
+            }
+        )
+        return res.json({ status: "success", message: "Password reset successful" });
+        }
+    }
+
+    catch(e){
+        return res.json({ status: "success", message:e.toString() });
+    }
 };
