@@ -17,7 +17,13 @@ export const CreateTask = async (req, res) => {
 };
 
 export const UpdateTaskStatus = async (req, res) => {
-    return res.json({ status: "success", message: "Task status updated" });
+    try{
+
+    }
+    catch(e){
+        return res.json({ status: "success", message: e.toString() });
+
+    }
 };
 
 export const TaskListbyStatus = async (req, res) => {
