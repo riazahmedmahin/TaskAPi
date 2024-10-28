@@ -17,11 +17,11 @@ router.post("/ResetePassword", UserControllers.ResetePassword);
 
 // TASK routes
 router.post("/CreateTask",auth,TaskController.CreateTask);
-router.get("/UpdateTaskStatus", auth,TaskController.UpdateTaskStatus);
-router.get("/TaskListbyStatus",auth, TaskController.TaskListbyStatus);
-router.get("/DeleteTask",auth, TaskController.DeleteTask);
+router.get("/UpdateTaskStatus/:user_id/:status", auth,TaskController.UpdateTaskStatus);
+router.get("/TaskListbyStatus/:status",auth, TaskController.TaskListbyStatus);
+router.get("/DeleteTask/:id",auth, TaskController.DeleteTask);
 router.get("/CountTask",auth,TaskController.CountTask);
 
 
 // Make sure to export the router
-export default router; // Change to default export
+export default router; 
