@@ -52,8 +52,8 @@ export const ProfileUpdate = async (req, res) => {
     try {
         let reqBody = req.body;
         let user_id = req.headers['user_id']
-        await UsersModel.updateOne({"_id":user_id},reqBody)
-        return res.json({ status: "success", message: "User Update successful" });
+        let data =await UsersModel.updateOne({"_id":user_id},reqBody)
+        return res.json({ status: "success", message: "User Update successful" ,data:data});
     }
     catch (e) {
         return res.json({ status: "error", message: e.toString() });
