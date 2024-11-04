@@ -19,7 +19,7 @@ app.use(helmet());
 app.use(express.json()); // To handle JSON payloads
 
 
-//app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Use the router
 app.use("/api", router);

@@ -17,4 +17,3 @@ export const URL_AENCODE = true;
 
 export const REQUEST_TIME = 20 * 60 * 1000;
 export const REQUEST_NUMBER = 200; 
-// hello
