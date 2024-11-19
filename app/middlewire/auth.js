@@ -9,8 +9,8 @@ export default  (req,res,next)=>{
     else{
         let email =decoded.email;
         let user_id= decoded.user_id;
-        req.header.email=email;
-        req.header.user_id=user_id;
+        req.headers.email=email;
+        req.headers.user_id=user_id;
         next()
     }
 
